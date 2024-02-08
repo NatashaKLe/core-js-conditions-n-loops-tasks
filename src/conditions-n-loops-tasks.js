@@ -378,31 +378,6 @@ function getSpiralMatrix(size) {
 
   return matrix;
 }
-// let number = 0;
-// const matrix = [];
-// for (let i = 0; i < size; i += 1) {
-//   matrix.push(new Array(size).fill(0));
-// }
-// function spiral(rowStart, rowEnd, colStart, colEnd) {
-//   for (let j = colStart; j < colEnd; j += 1) {
-//     number += 1;
-//     matrix[rowStart][j] = number;
-//   }
-//   for (let i = rowStart + 1; i < rowEnd; i += 1) {
-//     number += 1;
-//     matrix[i][colEnd - 1] = number;
-//   }
-//   for (let j = colEnd - 2; j >= colStart; j -= 1) {
-//     number += 1;
-//     matrix[rowEnd - 1][j] = number;
-//   }
-//   for (let i = rowEnd - 2; i > rowStart; i -= 1) {
-//     number += 1;
-//     matrix[i][colStart] = number;
-//   }
-// }
-// spiral(0, size, 0, size);
-// return matrix;
 
 /**
  * Rotates a matrix by 90 degrees clockwise in place.
@@ -419,8 +394,23 @@ function getSpiralMatrix(size) {
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
-function rotateMatrix(/* matrix */) {
-  throw new Error('Not implemented');
+function rotateMatrix(matrix) {
+  const matrixTest = [];
+  for (let i = 0; i < matrix.length; i += 1) {
+    matrixTest[i] = Array(matrix.length);
+  }
+  for (let i = matrix.length - 1; i >= 0; i -= 1) {
+    for (let j = 0; j < matrix.length; j += 1) {
+      matrixTest[i][j] = matrix[matrix.length - 1 - j][i];
+    }
+  }
+  const rotate = matrix;
+
+  for (let i = 0; i < matrix.length; i += 1) {
+    for (let j = 0; j < matrix.length; j += 1) {
+      rotate[i][j] = matrixTest[i][j];
+    }
+  }
 }
 
 /**
